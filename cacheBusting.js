@@ -1,9 +1,8 @@
 const fs = require('fs');
-const path = require('path');
 
 const htmlFilePath = 'dist/index.html';
-const cssFilePath = 'dist/css/style.min.css';
-const jsFilePath = 'dist/js/script.min.js';
+const cssFilePath = 'css/style.min.css';
+const jsFilePath = 'js/script.min.js';
 
 const updateTimestamp = (filePath) => {
     const timeStamp = Date.now();
@@ -11,7 +10,16 @@ const updateTimestamp = (filePath) => {
 };
 
 let htmlContent = fs.readFileSync(htmlFilePath, 'utf8');
-htmlContent = htmlContent.replace(/href="([^"]+\.css)"/, `href="${updateTimestamp(cssFilePath)}"`);
-htmlContent = htmlContent.replace(/src="([^"]+\.js)"/, `src="${updateTimestamp(jsFilePath)}"`);
+
+// CSSファイルのキャッシュバスティング
+htmlContent = htmlContent.replace(/href="([^"]+\.css)"/g, `href="${updateTimestamp(cssFilePath)}"`);
+
+// JSファイルのキャッシュバスティング
+htmlContent = htmlContent.replace(/src="([^"]+\.js)"/g, `src="${updateTimestamp(jsFilePath)}"`);
+
+// 画像ファイルのキャッシュバスティング
+htmlContent = htmlContent.replace(/src="([^"]+\.(png|jpg|jpeg|gif|svg))"/g, (match, p1) => {
+    return `src="${updateTimestamp(p1)}"`;
+});
 
 fs.writeFileSync(htmlFilePath, htmlContent, 'utf8');
