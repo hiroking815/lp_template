@@ -1,8 +1,8 @@
 const fs = require('fs');
 
-const htmlFilePath = 'dist/index.html';
-const cssFilePath = 'css/style.min.css';
-const jsFilePath = 'js/script.min.js';
+const htmlFilePath = './dist/index.html';
+const cssFilePath = './css/style.min.css';
+const jsFilePath = './js/script.min.js';
 
 const updateTimestamp = (filePath) => {
     const timeStamp = Date.now();
