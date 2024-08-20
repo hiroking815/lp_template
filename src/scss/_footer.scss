@@ -1,5 +1,7 @@
+@use "variables" as var;
+
 footer {
-  background-color: var(--main-font-color);
+  background-color: var.$main-font-color;
   color: white;
   text-align: center;
   padding: 20px 0;

@@ -1,6 +1,8 @@
+@use "variables" as var;
+
 // ヘッダー
 header {
-  background-color: var(--main-font-color);
+  background-color: var.$main-font-color;
   padding: 20px 0;
 
   .logo {
