@@ -1,0 +1,9 @@
+@use "reset";
+@use "variables" as var;
+
+* {
+  font-family: var(--main-font-family);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--main-font-color);
+}

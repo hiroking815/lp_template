@@ -1,0 +1,27 @@
+{
+  "name": "lp_template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:scss": "sass src/scss/style.scss | postcss --use autoprefixer cssnano -o dist/css/style.min.css --source-map",
+    "minify:js": "terser src/js/script.js -o dist/js/script.min.js",
+    "cache:bust": "node cacheBusting.js",
+    "watch:scss": "nodemon --config nodemon.json -e scss -x \"npm run build:scss && npm run cache:bust\"",
+    "watch:js": "nodemon --config nodemon.json -e js -x \"npm run minify:js && npm run cache:bust\"",
+    "serve": "browser-sync start --server 'dist' --files 'dist/**/*.html, dist/**/*.css, dist/**/*.js'",
+    "dev": "npm-run-all --parallel watch:scss watch:js serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "browser-sync": "^3.0.2",
+    "cssnano": "^7.0.5",
+    "nodemon": "^3.1.4",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.77.8",
+    "terser": "^5.31.6"
+  }
+}
