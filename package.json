@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "copy:html": "node ./packages/copyHtml.js",
     "build:scss": "sass src/scss/style.scss | postcss --use autoprefixer cssnano -o dist/css/style.min.css --source-map",
     "minify:js": "terser src/js/script.js -o dist/js/script.min.js",
     "copy:images": "node ./packages/copyImages.js",
     "cache:bust": "node ./packages/cacheBusting.js",
     "watch:scss": "nodemon --config ./packages/nodemon.json -e scss -x \"npm run build:scss && npm run cache:bust\"",
     "watch:js": "nodemon --config ./packages/nodemon.json -e js -x \"npm run minify:js && npm run cache:bust\"",
+    "watch:html": "nodemon --config ./packages/nodemon.json -e html -x \"npm run copy:html && npm run cache:bust\"",
     "watch:images": "nodemon --config ./packages/nodemon.json -e png,jpg,jpeg,gif,svg -x \"npm run copy:images && npm run cache:bust\"",
     "serve": "browser-sync start --server 'dist' --files 'dist/**/*.html, dist/**/*.css, dist/**/*.js, dist/**/*.png, dist/**/*.jpg, dist/**/*.jpeg, dist/**/*.gif, dist/**/*.svg'",
-    "dev": "npm-run-all --parallel watch:scss watch:js watch:images serve"
+    "dev": "npm-run-all --parallel watch:scss watch:js watch:html watch:images serve"
   },
   "author": "",
   "license": "ISC",
