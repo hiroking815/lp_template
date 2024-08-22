@@ -12,8 +12,8 @@
     "watch:scss": "nodemon --config ./packages/nodemon.json -e scss -x \"npm run build:scss && npm run cache:bust\"",
     "watch:js": "nodemon --config ./packages/nodemon.json -e js -x \"npm run minify:js && npm run cache:bust\"",
     "watch:html": "nodemon --config ./packages/nodemon.json -e html -x \"npm run copy:html && npm run cache:bust\"",
-    "watch:images": "nodemon --config ./packages/nodemon.json -e png,jpg,jpeg,gif,svg -x \"npm run copy:images && npm run cache:bust\"",
-    "serve": "browser-sync start --server 'dist' --files 'dist/**/*.html, dist/**/*.css, dist/**/*.js, dist/**/*.png, dist/**/*.jpg, dist/**/*.jpeg, dist/**/*.gif, dist/**/*.svg'",
+    "watch:images": "nodemon --config ./packages/nodemon.json -e png,jpg,jpeg,gif,svg,webp -x \"npm run copy:images && npm run cache:bust\"",
+    "serve": "browser-sync start --server 'dist' --files 'dist/**/*.html, dist/**/*.css, dist/**/*.js, dist/**/*.png, dist/**/*.jpg, dist/**/*.jpeg, dist/**/*.gif, dist/**/*.svg, dist/**/*.webp'",
     "dev": "npm-run-all --parallel watch:scss watch:js watch:html watch:images serve"
   },
   "author": "",
