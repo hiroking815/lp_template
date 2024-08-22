@@ -18,7 +18,7 @@ htmlContent = htmlContent.replace(/href="([^"]+\.css)"/g, `href="${updateTimesta
 htmlContent = htmlContent.replace(/src="([^"]+\.js)"/g, `src="${updateTimestamp(jsFilePath)}"`);
 
 // 画像ファイルのキャッシュバスティング
-htmlContent = htmlContent.replace(/src="([^"]+\.(png|jpg|jpeg|gif|svg))"/g, (match, p1) => {
+htmlContent = htmlContent.replace(/src="([^"]+\.(png|jpg|jpeg|gif|svg|webp))"/g, (match, p1) => {
     return `src="${updateTimestamp(p1)}"`;
 });
 
