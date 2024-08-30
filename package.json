@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "copy:html": "node ./packages/copyHtml.js",
-    "build:scss": "sass src/scss/style.scss | postcss --use autoprefixer cssnano -o dist/css/style.min.css --source-map",
+    "build:scss": "sass src/scss/style.scss dist/css/style.min.css --source-map && postcss dist/css/style.min.css --use autoprefixer cssnano -o dist/css/style.min.css --map",
     "minify:js": "terser src/js/script.js -o dist/js/script.min.js",
     "copy:images": "node ./packages/copyImages.js",
     "cache:bust": "node ./packages/cacheBusting.js",
